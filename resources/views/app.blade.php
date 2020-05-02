@@ -16,6 +16,9 @@
     </head>
     <body>
         <div id="app"></div>
+        <script>window.__PREFILLED_DATA = JSON.parse('<?php
+            echo json_encode(!empty($prefilled_data) ? $prefilled_data : []);
+        ?>');</script>
         <script defer src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>

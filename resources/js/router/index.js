@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
+import NotFound from "@/views/NotFound";
 import routes from "./routes";
 
 export const Router = ({ children }) => {
@@ -20,6 +21,7 @@ export const RouterSwitch = () => {
                     />
                 );
             })}
+            <Route component={NotFound} />
         </Switch>
     );
 };
