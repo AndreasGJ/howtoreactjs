@@ -1,5 +1,7 @@
 {
-    "/js/app.js": "/js/app.js?id=35c5b1e353ec11b5fc74",
+    "/js/admin/app.js": "/js/admin/app.js?id=b8f3e06976f50e994600",
+    "/js/app.js": "/js/app.js?id=6733429620a2c1666c6b",
     "/css/app.css": "/css/app.css?id=330f0de9f71d757b8ce5",
+    "/css/admin/app.css": "/css/admin/app.css?id=d76f9264cb7e33de828d",
     "/favicon.ico": "/favicon.ico?id=5eda886c23c4004352f5"
 }

@@ -1,0 +1,32 @@
+@import url(/normalize.css/normalize.css);* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+svg {
+  box-sizing: content-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  min-height: 100%;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #111111;
+}
+

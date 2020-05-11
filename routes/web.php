@@ -13,4 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('{all}', 'AppController@index')->where(['all' => '^(?!nova).*$']);
+Route::get('admin{all}', 'AdminAppController@index')->where(['all' => '^.*$']);
+Route::get('{all}', 'AppController@index')->where(['all' => '^(?!admin).*$']);

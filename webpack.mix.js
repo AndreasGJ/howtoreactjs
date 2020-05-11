@@ -1,5 +1,5 @@
-const mix = require('laravel-mix');
-const path = require('path');
+const mix = require("laravel-mix");
+const path = require("path");
 
 /*
  |--------------------------------------------------------------------------
@@ -12,18 +12,21 @@ const path = require('path');
  |
  */
 
-mix.copy('resources/assets/favicon.ico', 'public');
+mix.copy("resources/assets/favicon.ico", "public");
 
 mix.webpackConfig({
     resolve: {
         alias: {
+            "@admin": path.resolve(__dirname, "resources/admin/js"),
             "@": path.resolve(__dirname, "resources/js")
         }
-    },
+    }
 });
 
-mix.react('resources/js/app.js', 'public/js');
+mix.react("resources/js/app.js", "public/js");
+mix.sass("resources/sass/app.scss", "public/css");
 
-mix.sass('resources/sass/app.scss', 'public/css');
+mix.react("resources/admin/js/app.js", "public/js/admin");
+mix.sass("resources/admin/sass/app.scss", "public/css/admin");
 
 mix.sourceMaps().version();

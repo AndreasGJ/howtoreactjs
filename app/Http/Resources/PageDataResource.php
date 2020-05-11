@@ -22,8 +22,11 @@ class PageDataResource extends JsonResource
      */
     public function toArray($request)
     {
+        $user = $request->user();
+
         return [
             'page' => PageResource::make($this->page),
+            'profile' => $user ? ProfileResource::make($user) : null
         ];
     }
 }

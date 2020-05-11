@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->group(function(){
-
+Route::middleware('auth:sanctum')->group(function(){
+    Route::get('auth/me', 'AuthController@me');
 });
 
 Route::get('page', 'PageController@show');
+Route::post('auth/login', 'AuthController@login');
