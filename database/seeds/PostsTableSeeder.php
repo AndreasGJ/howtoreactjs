@@ -31,6 +31,10 @@ class PostsTableSeeder extends Seeder
 console.log("x", x);',
                         'mode' => 'javascript',
                     ]],
+                    ['type' => 'image', 'attributes' => [
+                        'image' => 'https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                        'alt' => 'Man sitting at his Macbook and smiling',
+                    ]],
                 ],
                 'user_id' => $admin_user_id,
                 'status' => 'publish'

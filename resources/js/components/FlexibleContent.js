@@ -3,10 +3,12 @@ import styled from "styled-components";
 
 import RowText from "@/components/flexible-rows/RowText";
 import RowCode from "@/components/flexible-rows/RowCode";
+import RowImage from "@/components/flexible-rows/RowImage";
 
 const ROW_TEMPLATES = {
     text: RowText,
     code: RowCode,
+    image: RowImage,
 };
 /**
  * Name: FlexibleContent
