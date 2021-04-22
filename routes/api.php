@@ -19,4 +19,8 @@ Route::middleware('auth:sanctum')->group(function(){
 });
 
 Route::get('page', 'PageController@show');
+
+Route::get('posts', 'PostController@index');
+Route::get('posts/{post}', 'PostController@show');
+
 Route::post('auth/login', 'AuthController@login');

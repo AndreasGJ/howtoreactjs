@@ -18,15 +18,19 @@ mix.webpackConfig({
     resolve: {
         alias: {
             "@admin": path.resolve(__dirname, "resources/admin/js"),
-            "@": path.resolve(__dirname, "resources/js")
-        }
-    }
+            "@": path.resolve(__dirname, "resources/js"),
+        },
+    },
 });
 
-mix.react("resources/js/app.js", "public/js");
-mix.sass("resources/sass/app.scss", "public/css");
+// Frontend
+mix.js("resources/js/index.js", "public/js/app.js").react();
+mix.postCss("resources/css/app.css", "public/css", [require("tailwindcss")]);
 
-mix.react("resources/admin/js/app.js", "public/js/admin");
-mix.sass("resources/admin/sass/app.scss", "public/css/admin");
+// Admin
+mix.js("resources/admin/js/index.js", "public/js/admin/app.js").react();
+mix.postCss("resources/admin/css/app.css", "public/css/admin", [
+    require("tailwindcss"),
+]);
 
 mix.sourceMaps().version();

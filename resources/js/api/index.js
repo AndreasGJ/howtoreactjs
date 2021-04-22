@@ -1,26 +1,35 @@
 import axios from "axios";
 
-import { getErrorMessages } from "@/helpers/api";
-import { getCookie } from "@/helpers";
-import config from "@/configs";
+// Method to retrieve token.
+const getToken = () => false;
 
+// Method which will be executed on all requests when success message is returned.
+const showRequestSuccessMessage = () => {};
+
+// Method which will be executed on all requests when error message is returned.
+const showRequestErrorMessage = () => {};
+
+// Default headers.
 const defaultHeaders = {
     "Content-Type": "application/json;charset=utf-8",
     "X-Requested-With": "XMLHttpRequest",
-    Accept: "application/json"
+    Accept: "application/json",
 };
 
 axios.defaults.headers.common = {
     ...axios.defaults.headers.common,
-    ...defaultHeaders
+    ...defaultHeaders,
 };
+axios.defaults.timeout = 0;
+
+// Set base path or url.
 axios.defaults.baseURL = "/api";
 
-axios.interceptors.request.use(request => {
-    const token = getCookie(config("basic.cookie_auth"));
+axios.interceptors.request.use((request) => {
+    const token = getToken();
 
     // If the user is logged in then add the auth header with token.
-    if (token) {
+    if (token && request.isThirdParty !== true) {
         request.headers.Authorization = `Bearer ${token}`;
     }
 
@@ -28,32 +37,27 @@ axios.interceptors.request.use(request => {
 });
 
 axios.interceptors.response.use(
-    response => {
+    (response) => {
         if (
             response.data &&
             response.data.message &&
             !response.config.noMessage
         ) {
-            console.log("response.data.message", response.data.message);
+            showRequestSuccessMessage(response.data.message);
         }
 
         return response;
     },
-    error => {
-        if (
-            error.response &&
-            error.response.data &&
-            !error.config.noErrors &&
-            (error.response.data.message || error.response.data.errors)
-        ) {
-            const errorMessage = getErrorMessages(error.response.data);
-
-            console.log("error", errorMessage);
+    (error) => {
+        if (error.response && error.response.data && !error.config.noErrors) {
+            showRequestErrorMessage(error.response.data);
         }
+
+        return Promise.reject(error);
     }
 );
 
-export const useCancel = () => {
+export const getCancelToken = () => {
     const CancelToken = axios.CancelToken;
     const source = CancelToken.source();
 

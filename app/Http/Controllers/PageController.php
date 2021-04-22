@@ -9,18 +9,6 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $models = Page::where('status', 'publish')->get();
-
-        return PageResource::collection($models);
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \Illuminate\Http\Request $request
